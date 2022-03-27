@@ -15,8 +15,30 @@
         <script src = './utils/jquery-3.6.0.min.js'></script>
         <script src = './utils/bootstrap.min.js'></script>
         <link rel = 'stylesheet' href = './utils/bootstrap.min.css'/>
-    </head>
-    <body>
+        <script>
+            window.onload = function() {
 
+                const ARTSTATION_GET_JSON_DATA_URL = 'https://www.artstation.com/users/katznboyz/projects.json?page=1&user_id=2563577';
+                const GITHUB_GET_JSON_DATA_URL = 'about:blank';
+
+                $.getJSON(ARTSTATION_GET_JSON_DATA_URL, function(jsonData) {
+
+                    let jsonDataKeys = Object.keys(jsonData['data']);
+                    let randomIndex = Math.floor(Math.random() * jsonDataKeys.length);
+                    let backgroundURL = jsonData['data'][randomIndex]['cover']['thumb_url'];
+
+                    document.body.style.backgroundImage = backgroundURL;
+
+                    console.log(backgroundURL)
+                });
+            };
+        </script>
+    </head>
+    <body class = 'bg-dark'>
+        <div class = 'container d-flex flex-column text-light text-center'>
+            <div class = 'jumbotron bg-transparent flex-grow-1'>
+                <h1 class = 'display-4'>katznboyz - 3D artist/software developer</h1>
+            </div>
+        </div>
     </body>
 </html>
